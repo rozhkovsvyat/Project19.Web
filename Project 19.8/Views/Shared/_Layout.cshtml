@@ -1,0 +1,26 @@
+﻿<link rel="stylesheet" href="~/css/site.css" />
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link runat="server" rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
+    <link runat="server" rel="icon" href="~/favicon.ico" type="image/ico" />
+</head>
+<body>
+    <div>
+        <h1><i class="bi-telephone"></i> Phonebook</h1>
+        @if (ViewBag.Title != "Phonebook")
+        { 
+            <h4>@ViewBag.Title</h4> 
+        }
+        @RenderBody()
+        @if (IsSectionDefined("scripts"))
+        {
+            RenderSection("scripts");
+        }
+    </div>
+</body>
+</html>
