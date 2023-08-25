@@ -2,6 +2,7 @@
 @import url("//cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css");
 
 body {
-    padding-top: 50px;
-    margin-left: 50px;
+    grid-template-rows: auto auto 1fr auto;
+    height: 100vh;
+    display: grid;
 }

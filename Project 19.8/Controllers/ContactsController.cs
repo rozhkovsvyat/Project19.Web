@@ -17,21 +17,21 @@ public class ContactsController : Controller
     // GET: Contacts
     public async Task<IActionResult> Index()
     {
-          return _context.Contact != null ? 
-                      View(await _context.Contact.ToListAsync()) :
+          return _context.Contacts != null ? 
+                      View(await _context.Contacts.ToListAsync()) :
                       Problem("Entity set 'ContactsContext.Contact'  is null.");
     }
 
     // GET: Contacts/Details/5
     public async Task<IActionResult> Details(int? id)
     {
-        if (id == null || _context.Contact == null)
+        if (id == null || _context.Contacts == null)
         {
             return NotFound();
         }
 
-        var contact = await _context.Contact
-            .FirstOrDefaultAsync(m => m.ID == id);
+        var contact = await _context.Contacts
+            .FirstOrDefaultAsync(m => m.Id == id);
         if (contact == null)
         {
             return NotFound();
@@ -51,7 +51,7 @@ public class ContactsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("ID,LastName,FirstName,Patronymic,MobileNumber,Address,Description")] Contact contact)
+    public async Task<IActionResult> Create([Bind("Id,LastName,FirstName,Patronymic,MobileNumber,Address,Description")] Contact contact)
     {
         if (ModelState.IsValid)
         {
@@ -65,12 +65,12 @@ public class ContactsController : Controller
     // GET: Contacts/Edit/5
     public async Task<IActionResult> Edit(int? id)
     {
-        if (id == null || _context.Contact == null)
+        if (id == null || _context.Contacts == null)
         {
             return NotFound();
         }
 
-        var contact = await _context.Contact.FindAsync(id);
+        var contact = await _context.Contacts.FindAsync(id);
         if (contact == null)
         {
             return NotFound();
@@ -83,9 +83,9 @@ public class ContactsController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("ID,LastName,FirstName,Patronymic,MobileNumber,Address,Description")] Contact contact)
+    public async Task<IActionResult> Edit(int id, [Bind("Id,LastName,FirstName,Patronymic,MobileNumber,Address,Description")] Contact contact)
     {
-        if (id != contact.ID)
+        if (id != contact.Id)
         {
             return NotFound();
         }
@@ -99,7 +99,7 @@ public class ContactsController : Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ContactExists(contact.ID))
+                if (!ContactExists(contact.Id))
                 {
                     return NotFound();
                 }
@@ -116,13 +116,13 @@ public class ContactsController : Controller
     // GET: Contacts/Delete/5
     public async Task<IActionResult> Delete(int? id)
     {
-        if (id == null || _context.Contact == null)
+        if (id == null || _context.Contacts == null)
         {
             return NotFound();
         }
 
-        var contact = await _context.Contact
-            .FirstOrDefaultAsync(m => m.ID == id);
+        var contact = await _context.Contacts
+            .FirstOrDefaultAsync(m => m.Id == id);
         if (contact == null)
         {
             return NotFound();
@@ -136,14 +136,14 @@ public class ContactsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        if (_context.Contact == null)
+        if (_context.Contacts == null)
         {
             return Problem("Entity set 'ContactsContext.Contact'  is null.");
         }
-        var contact = await _context.Contact.FindAsync(id);
+        var contact = await _context.Contacts.FindAsync(id);
         if (contact != null)
         {
-            _context.Contact.Remove(contact);
+            _context.Contacts.Remove(contact);
         }
         
         await _context.SaveChangesAsync();
@@ -152,6 +152,6 @@ public class ContactsController : Controller
 
     private bool ContactExists(int id)
     {
-      return (_context.Contact?.Any(e => e.ID == id)).GetValueOrDefault();
+      return (_context.Contacts?.Any(e => e.Id == id)).GetValueOrDefault();
     }
 }

@@ -6,8 +6,7 @@
 }
 
 <div>
-    <hr />
-    <dl class="row">
+	<dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
@@ -47,8 +46,9 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.ID">
+    <a asp-action="Edit" asp-route-id="@Model?.Id">
         <input type="submit" value="Edit" class="btn btn-primary" /></a>
     <a asp-action="Index">
-        <input type="submit" value="Back to book" class="btn btn-secondary" /></a>
+        <input type="submit" value="Back to book" class="btn btn-secondary" />
+    </a>
 </div>

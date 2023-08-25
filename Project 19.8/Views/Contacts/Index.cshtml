@@ -5,50 +5,58 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 
-<p>
-    <a asp-action="Create">
-        <input type="submit" value="Add contact" class="btn btn-primary" /> </a>
-</p>
-<table class="table" border="1">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Patronymic)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ID">
-                    @Html.DisplayFor(modelItem => item.ID)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Patronymic)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+<table class="table table-striped table-bordered m-0 p-0">
+	<thead>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Id)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.LastName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.FirstName)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Patronymic)
+		</th>
+		<th class="w-25">
+			Actions
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	@foreach (var item in Model) {
+		<tr>
+			<td>
+				<a asp-action="Details" asp-route-id="@item.Id">
+					@Html.DisplayFor(modelItem => item.Id)</a>
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.LastName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.FirstName)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Patronymic)
+			</td>
+				<td>
+					<a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a>
+					<a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle text-secondary"></i></a>
+					<a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3 text-danger"></i></a>
+			</td>
+		</tr>
+	}
+	</tbody>
 </table>
+
+@section Title {
+	<p>
+		<a asp-action="Create">
+			<input class="btn btn-primary"
+			       value="Add contact"
+			       type="submit"/>
+		</a>
+	</p>
+}

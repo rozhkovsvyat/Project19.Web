@@ -17,5 +17,5 @@ public class ContactsContext : DbContext
     /// <summary>
     /// Сущности контекста
     /// </summary>
-    public DbSet<Contact> Contact { get; set; } = default!;
+    public DbSet<Contact> Contacts { get; set; } = default!;
 }

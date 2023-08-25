@@ -1,26 +1,79 @@
-﻿<link rel="stylesheet" href="~/css/site.css" />
+﻿@inject IUrlButtonService UrlButtonService
 
 <!DOCTYPE html>
 
 <html>
+
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <link runat="server" rel="shortcut icon" href="~/favicon.ico" type="image/x-icon" />
-    <link runat="server" rel="icon" href="~/favicon.ico" type="image/ico" />
+	<meta name="viewport" content="width=device-width"/>
+	<title>@ViewBag.Title</title>
+
+	<link runat="server" rel="shortcut icon" href="~/favicon.ico" type="image/x-icon"/>
+	<link runat="server" rel="icon" href="~/favicon.ico" type="image/ico"/>
+	<link rel="stylesheet" href="~/css/site.css"/>
+
+	@foreach (var script in UrlButtonService.Scripts)
+	{
+		<script src="@script.Url" crossorigin="@script.CrossOrigin"></script>
+	}
 </head>
-<body>
-    <div>
-        <h1><i class="bi-telephone"></i> Phonebook</h1>
-        @if (ViewBag.Title != "Phonebook")
-        { 
-            <h4>@ViewBag.Title</h4> 
-        }
-        @RenderBody()
-        @if (IsSectionDefined("scripts"))
-        {
-            RenderSection("scripts");
-        }
-    </div>
+
+<body class="bg-light">
+
+<header class="bg-dark text-left text-white p-5">
+	<h1><i class="bi-telephone"></i> Phonebook</h1>
+</header>
+
+<div class="px-5 pt-3">
+
+	@if (IsSectionDefined("Title"))
+	{
+		@await RenderSectionAsync("Title")
+	}
+	else
+	{
+		<h4>@ViewBag.Title</h4>
+	}
+</div>
+
+<main class="overflow-auto px-5">
+	@RenderBody()
+	@if (IsSectionDefined("scripts"))
+	{
+		@await RenderSectionAsync("scripts")
+	}
+</main>
+
+<footer class="text-center text-white">
+
+	<div class="container p-4 pb-0">
+
+		<section class="mb-4">
+
+			@foreach (var button in UrlButtonService.Buttons)
+			{
+				<a class="btn text-white btn-floating m-1"
+				   style="background-color: @button.Color"
+				   target="_blank"
+				   href="@button.Url"
+				   role="button">
+					<i class="@button.Icss"></i>
+				</a>
+			}
+		</section>
+	</div>
+
+	<div class="text-center p-3" style="background-color: #0d6efd;">
+		© @DateTime.Now.Year Made for
+		<a
+			href="https://skillbox.ru/"
+			target="_blank">
+			<img class="img-thumbnail border border-0"
+			     width="46" height="10"
+			     alt="Responsive image"
+			     src="~/skillbox_logo.svg">
+		</a>
+	</div>
+</footer>
 </body>
 </html>
