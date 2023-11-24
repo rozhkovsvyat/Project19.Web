@@ -1,4 +1,4 @@
-# Project 19 : Phonebook
+# Project 19 : Phonebook Web Client
 #aspnetcore7.0.10 
 
 Реализован простой сайт, выводящий информацию телефонной книжки
