@@ -20,7 +20,7 @@ public static class ServiceCollectionExtensions
 	public static IServiceCollection AddPhonebookApi(this IServiceCollection collection, IConfiguration config)
 	{
 		collection.AddHttpClient(nameof(HttpClient)); 
-		return collection.AddSession(o => o.IdleTimeout = TimeSpan.FromMinutes(30))
+		return collection.AddSession(o => o.IdleTimeout = TimeSpan.FromDays(1))
 			.AddApiContacts(config).AddApiIdentity(config);
 	}
 
