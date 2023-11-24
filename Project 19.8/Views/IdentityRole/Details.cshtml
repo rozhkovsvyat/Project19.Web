@@ -1,0 +1,35 @@
+﻿@model Project_19.Models.Role
+
+@{
+    ViewData["Icss"] = "bi bi-star-fill";
+    ViewData["Title"] = "Role details";
+	var isAdmin = Model.Name == "admin";
+}
+
+<div>
+	<dl class="row">
+		<dt class = "col-sm-2">
+			@Html.DisplayNameFor(model => model.Id)
+		</dt>
+		<dd class = "col-sm-10">
+			@Html.DisplayFor(model => model.Id)
+		</dd>
+		<dt class="col-sm-2">
+			@Html.DisplayNameFor(model => model.Name)
+		</dt>
+		<dd class="col-sm-10">
+			@Html.DisplayFor(model => model.Name)
+		</dd>
+	</dl>
+</div>
+<div>
+	@if (!isAdmin)
+	{
+		<a class="text-decoration-none" asp-action="Edit" asp-route-id="@Model.Id">
+			<input type="submit" value="Edit" class="btn btn-warning"/>
+		</a>
+	}
+	<a class="text-decoration-none" asp-action="Index">
+		<input type="submit" value="Back to roles" class="btn btn-secondary"/>
+	</a>
+</div>

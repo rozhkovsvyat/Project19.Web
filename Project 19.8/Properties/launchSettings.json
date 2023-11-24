@@ -1,29 +1,36 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:16599",
-      "sslPort": 44341
-    }
-  },
   "profiles": {
     "http": {
       "commandName": "Project",
+      "applicationUrl": "http://localhost:8080",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:5224",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "https": {
       "commandName": "Project",
+      "applicationUrl": "https://localhost:5443;http://localhost:5080",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7100;http://localhost:5224",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_HTTPS_PORT": "443",
+        "ASPNETCORE_Kestrel__Certificates__Default__Path": "./aspnetapp.crt",
+        "ASPNETCORE_Kestrel__Certificates__Default__KeyPath": "./aspnetapp.rsa"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "ASPNETCORE_URLS": "http://+:80",
+        "API_CONTACTS_URL": "",
+        "API_IDENTITY_URL": ""
       }
     },
     "IIS Express": {
@@ -32,6 +39,14 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    }
+  },
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:16599",
+      "sslPort": 44341
     }
   }
 }

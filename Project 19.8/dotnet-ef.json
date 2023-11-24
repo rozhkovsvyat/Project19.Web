@@ -2,7 +2,3 @@
 
 //$Global:OutputEncoding = [Console]::InputEncoding = [ Console ]::OutputEncoding = [ System.Text.UTF8Encoding ]::new()
 //dotnet tool update --global dotnet-ef
-
-//dotnet ef migrations add InitialCreate --context ContactsContext --output-dir Migrations/
-//dotnet ef migrations remove --context ContactsContext
-//dotnet ef database update --context ContactsContext

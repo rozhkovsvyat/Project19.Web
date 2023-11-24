@@ -1,157 +1,184 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Security.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
-using Project_19._8.Models;
+using Project_19.Models;
 
-namespace Project_19._8.Controllers;
+namespace Project_19.Controllers;
 
-public class ContactsController : Controller
+/// <summary>
+/// Api-контроллер работы с данными коллекции элементов типа <see cref="Contact"/>
+/// </summary>
+public class ContactsController : PhonebookController
 {
-    private readonly ContactsContext _context;
+	/// <inheritdoc cref="IContacts"/>
+	private readonly IContacts _contacts;
 
-    public ContactsController(ContactsContext context)
-    {
-        _context = context;
-    }
+	/// <summary>
+	/// Конструктор
+	/// </summary>
+	/// <param name="contacts">Коллекция контактов</param>
+	public ContactsController(IContacts contacts) 
+		: base("SignIn", "Identity") => _contacts = contacts;
 
-    // GET: Contacts
-    public async Task<IActionResult> Index()
-    {
-          return _context.Contacts != null ? 
-                      View(await _context.Contacts.ToListAsync()) :
-                      Problem("Entity set 'ContactsContext.Contact'  is null.");
-    }
+	#region [Get]
 
-    // GET: Contacts/Details/5
-    public async Task<IActionResult> Details(int? id)
-    {
-        if (id == null || _context.Contacts == null)
-        {
-            return NotFound();
-        }
+	/// <summary>
+	/// <inheritdoc cref="IContacts.GetAsync()"/>
+	/// </summary>
+	/// <returns>~Index (коллекция элементов <see cref="Contact"/>)</returns>
+	[HttpGet]
+	public async Task<IActionResult> Index()
+	{
+		try { return View(await _contacts.GetAsync()); }
 
-        var contact = await _context.Contacts
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (contact == null)
-        {
-            return NotFound();
-        }
+		catch (Exception) { return StatusCode(502); }
+	}
 
-        return View(contact);
-    }
+	/// <summary>
+	/// Запрашивает страницу создания <see cref="Contact"/>
+	/// </summary>
+	/// <returns>~View (новый <see cref="Contact"/>)</returns>
+	[HttpGet]
+	public IActionResult Create() 
+		=> User.Identity is { IsAuthenticated: true } ? View() : NotFound();
 
-    // GET: Contacts/Create
-    public IActionResult Create()
-    {
-        return View();
-    }
+	/// <summary>
+	/// <inheritdoc cref="IContacts.GetAsync(int)"/>
+	/// </summary>
+	/// <returns>~View (<see cref="Contact"/>) , NotFound</returns>
+	[HttpGet]
+	public async Task<IActionResult> Details(int? id)
+	{
+		if (User.Identity is not { IsAuthenticated: true }) return NotFound();
 
-    // POST: Contacts/Create
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,LastName,FirstName,Patronymic,MobileNumber,Address,Description")] Contact contact)
-    {
-        if (ModelState.IsValid)
-        {
-            _context.Add(contact);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-        return View(contact);
-    }
+		if (id is null) return NotFound();
 
-    // GET: Contacts/Edit/5
-    public async Task<IActionResult> Edit(int? id)
-    {
-        if (id == null || _context.Contacts == null)
-        {
-            return NotFound();
-        }
+		try
+		{
+			var contact = await _contacts.AddToken(Token).GetAsync((int)id);
+			return contact is null? NotFound() : View(contact);
+		}
 
-        var contact = await _context.Contacts.FindAsync(id);
-        if (contact == null)
-        {
-            return NotFound();
-        }
-        return View(contact);
-    }
+		catch (AuthenticationException) { return Authorize(Url.Action("Details", id)); }
 
-    // POST: Contacts/Edit/5
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, [Bind("Id,LastName,FirstName,Patronymic,MobileNumber,Address,Description")] Contact contact)
-    {
-        if (id != contact.Id)
-        {
-            return NotFound();
-        }
+		catch (Exception) { return StatusCode(502); }
+	}
 
-        if (ModelState.IsValid)
-        {
-            try
-            {
-                _context.Update(contact);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ContactExists(contact.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return RedirectToAction(nameof(Index));
-        }
-        return View(contact);
-    }
+	/// <summary>
+	/// Запрашивает страницу редактирования <see cref="Contact"/>
+	/// </summary>
+	/// <param name="id">Идентификатор</param>
+	/// <returns>~View (<see cref="Contact"/>) , NotFound</returns>
+	[HttpGet]
+	public async Task<IActionResult> Edit(int? id)
+	{
+		if (!User.IsInRole("admin")) return NotFound();
 
-    // GET: Contacts/Delete/5
-    public async Task<IActionResult> Delete(int? id)
-    {
-        if (id == null || _context.Contacts == null)
-        {
-            return NotFound();
-        }
+		if (id is null) return NotFound();
 
-        var contact = await _context.Contacts
-            .FirstOrDefaultAsync(m => m.Id == id);
-        if (contact == null)
-        {
-            return NotFound();
-        }
+		try
+		{
+			var contact = await _contacts.AddToken(Token).FindAsync((int)id);
+			return contact is null ? NotFound() : View(contact);
+		}
 
-        return View(contact);
-    }
+		catch (AuthenticationException) { return Authorize(Url.Action("Edit", id)); }
 
-    // POST: Contacts/Delete/5
-    [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id)
-    {
-        if (_context.Contacts == null)
-        {
-            return Problem("Entity set 'ContactsContext.Contact'  is null.");
-        }
-        var contact = await _context.Contacts.FindAsync(id);
-        if (contact != null)
-        {
-            _context.Contacts.Remove(contact);
-        }
-        
-        await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
-    }
+		catch (Exception) { return StatusCode(502); }
+	}
 
-    private bool ContactExists(int id)
-    {
-      return (_context.Contacts?.Any(e => e.Id == id)).GetValueOrDefault();
-    }
+	/// <summary>
+	/// Запрашивает страницу удаления <see cref="Contact"/>
+	/// </summary>
+	/// <param name="id">Идентификатор</param>
+	/// <returns>~View (<see cref="Contact"/>) , NotFound</returns>
+	[HttpGet]
+	public async Task<IActionResult> Delete(int? id)
+	{
+		if (!User.IsInRole("admin")) return NotFound();
+
+		if (id is null) return NotFound();
+
+		try
+		{
+			var contact = await _contacts.AddToken(Token).GetAsync((int)id);
+			return contact is null ? NotFound() : View(contact);
+		}
+
+		catch (AuthenticationException) { return Authorize(Url.Action("Delete", id)); }
+
+		catch (Exception) { return StatusCode(502); }
+	}
+
+	#endregion
+
+	 #region [Post]
+
+	/// <summary>
+	/// <inheritdoc cref="IContacts.AddAsync"/>
+	/// </summary>
+	/// <param name="contact">Тело контакта</param>
+	/// <returns>~View (<see cref="Contact"/>) если ошибка , ~Index (коллекция элементов <see cref="Contact"/>)</returns>
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public async Task<IActionResult> Create([Bind
+	("Id,LastName,FirstName,Patronymic,MobileNumber," +
+	 "Address,Description,CreatedBy")] Contact contact)
+	{
+		if (!ModelState.IsValid) return View(contact);
+
+		try { await _contacts.AddToken(Token).AddAsync(contact); return RedirectToAction(nameof(Index)); }
+
+		catch (AuthenticationException) { return Authorize(Url.Action("Create", contact)); }
+
+		catch (Exception) { return StatusCode(502); }
+	}
+
+	/// <summary>
+	/// Обновляет существующий контакт
+	/// </summary>
+	/// <param name="id">Идентификатор</param>
+	/// <param name="contact">Тело контакта</param>
+	/// <returns>~View (<see cref="Contact"/>) если ошибка , ~Index (коллекция элементов <see cref="Contact"/>) , NotFound , InternalServerError</returns>
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	public async Task<IActionResult> Edit(int id, [Bind
+	("Id,LastName,FirstName,Patronymic,MobileNumber," +
+	 "Address,Description,CreatedBy,LastModifiedBy")] Contact contact)
+	{
+		if (id != contact.Id) return NotFound();
+
+		if (!ModelState.IsValid) return View(contact);
+
+		try { await _contacts.AddToken(Token).UpdateAsync(contact); return RedirectToAction(nameof(Index)); }
+
+		catch (AuthenticationException) { return Authorize(Url.Action("Edit", new { id, contact })); }
+
+		catch (KeyNotFoundException) { return NotFound(); }
+
+		catch (Exception) { return StatusCode(502); }
+	}
+
+	/// <summary>
+	/// Удаляет существующий контакт
+	/// </summary>
+	/// <param name="id">Идентификатор</param>
+	/// <returns>~Index (коллекция элементов <see cref="Contact"/>) , NotFound</returns>
+	[HttpPost]
+	[ValidateAntiForgeryToken]
+	[ActionName(nameof(Delete))]
+	public async Task<IActionResult> DeleteConfirmed(int id)
+	{
+		try { await _contacts.AddToken(Token).RemoveAsync(id); return RedirectToAction(nameof(Index)); }
+
+		catch (AuthenticationException) { return Authorize(Url.Action("Delete", id)); }
+
+		catch (InvalidOperationException) { return StatusCode(500); }
+
+		catch (KeyNotFoundException) { return NotFound(); }
+
+		catch (Exception) { return StatusCode(502); }
+	}
+
+	#endregion
 }

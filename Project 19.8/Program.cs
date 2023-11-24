@@ -1,33 +1,28 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.HttpOverrides;
 
-using Project_19._8.Services;
-using Project_19._8.Models;
+using Project_19.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ContactsContext>(options =>
-	options.UseNpgsql(builder.Configuration.GetConnectionString(nameof(ContactsContext)) ??
-					 throw new InvalidOperationException($"Connection string {nameof(ContactsContext)} not found.")));
-
+builder.Services.AddPhonebookApi(builder.Configuration).AddSocialBar(builder.Configuration);
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddSocialBar(builder.Configuration.GetSection(nameof(SocialBar)));
 
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
+	app.UseForwardedHeaders(new ForwardedHeadersOptions
+	{
+		ForwardedHeaders
+			= ForwardedHeaders.XForwardedFor |
+			  ForwardedHeaders.XForwardedProto
+	});
+	app.UseExceptionHandler("/Home/Error");
 }
+else app.UseHsts().UseHttpsRedirection();
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.MapControllerRoute(name: "default", 
-	pattern: "{controller=Contacts}/{action=Index}/{id?}");
+app.UseStaticFiles().UseRouting().UsePhonebookApiTokenClaims();
+app.MapControllerRoute(name: "default", pattern: "{controller=Contacts}/{action=Index}/{id?}");
+app.MapHealthChecks("/healthz");
 
 app.Run();

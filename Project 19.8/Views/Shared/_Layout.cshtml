@@ -1,4 +1,5 @@
-﻿@inject IUrlButtonService UrlButtonService
+﻿@using Project_19.Services
+@inject IUrlButtonService UrlButtonService
 
 <!DOCTYPE html>
 
@@ -18,11 +19,15 @@
 	}
 </head>
 
+<style>
+	h1 { font-weight: 600; }
+	h4 { font-weight: 400; }
+	h6 { font-weight: 600; }
+</style>
+
 <body class="bg-light">
 
-<header class="bg-dark text-left text-white p-5">
-	<h1><i class="bi-telephone"></i> Phonebook</h1>
-</header>
+@await Component.InvokeAsync("Header")
 
 <div class="px-5 pt-3">
 
@@ -32,7 +37,7 @@
 	}
 	else
 	{
-		<h4>@ViewBag.Title</h4>
+		<h4><i class="@ViewBag.Icss"></i> @ViewBag.Title</h4>
 	}
 </div>
 

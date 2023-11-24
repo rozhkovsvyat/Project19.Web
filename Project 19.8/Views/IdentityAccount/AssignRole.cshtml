@@ -1,0 +1,44 @@
+﻿@model Project_19.Models.ManageRolesForm
+
+@{
+	ViewData["Icss"] = "bi bi-star-fill";
+    ViewData["Title"] = $"Assign role [{Model.Login}]";
+	var anyItems = Model.Roles.Any();
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AssignRole" asp-route-id="@Model.Login" asp-antiforgery="true">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+	        <input type="hidden" asp-for="Login" />
+	        <input type="hidden" asp-for="Roles" />
+
+	        <div class="form-group">
+		        @if (anyItems)
+		        {
+			        <label class="control-label">Select:</label>
+			        @Html.DropDownListFor(model => model.RoleName, Model.Roles, new { @class = "form-select" })
+		        }
+		        else
+		        {
+			        <label class="control-label">No roles to assign.</label>
+		        }
+	        </div>
+
+	        <div class="form-group" style="margin-top: 10px">
+                @if (anyItems)
+                {
+	                <input type="submit" value="Confirm" class="btn btn-success"/>
+                }
+		        <input type="button" value="Back to accounts" class="btn btn-secondary"
+		               onclick="location.href='@Url.Action("Index")'"/>
+	        </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

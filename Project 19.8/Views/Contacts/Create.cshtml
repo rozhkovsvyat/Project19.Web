@@ -1,14 +1,18 @@
-﻿@model Contact
+﻿@model Project_19.Models.Contact
 
 @{
+    ViewData["Icss"] = "bi bi-person-plus-fill";
     ViewData["Title"] = "Add contact";
-    Layout = "/Views/Shared/_Layout.cshtml";
+    var user = User.Identity?.Name ?? string.Empty;
 }
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Create" asp-antiforgery="true">
+	        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+	        <input type="hidden" asp-for="CreatedBy"value="@user" />
+
             <div class="form-group">
                 <label asp-for="LastName" class="control-label"></label>
                 <input asp-for="LastName" class="form-control" />

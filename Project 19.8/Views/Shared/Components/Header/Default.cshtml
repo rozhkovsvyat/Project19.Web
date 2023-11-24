@@ -1,0 +1,72 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<header class="bg-dark text-left text-white hstack gap-3 p-5">
+
+	<form method="get" asp-controller="Contacts" asp-action="Index" id="contactsform">
+		<a class="text-decoration-none navbar-brand" href="/" onclick="document.getElementById('contactsform').submit()">
+			<h1><i class="bi-telephone"></i> Phonebook</h1>
+		</a>
+	</form>
+
+	<div class="navbar-brand hstack">|
+		
+		<a class="btn btn-outline-light border-0 dropdown-toggle"
+		   data-bs-toggle="dropdown" aria-expanded="false"
+		   role="button" href="#">
+
+			@{
+				var iсss = User.Identity is { IsAuthenticated: true } ?
+					"bi bi-person-circle" : "bi bi-shield-lock-fill";
+				var title = User.Identity is { IsAuthenticated: true } ?
+					User.Identity.Name : string.Empty;
+			}
+			<i class="@iсss"></i> @title
+
+		</a>
+
+		<div class="dropdown">
+			<ul class="dropdown-menu">
+				<li>
+
+					@if (User.Identity is { IsAuthenticated: true })
+					{
+						@if (User.IsInRole("admin"))
+						{
+							<h6 class="dropdown-header">Management</h6>
+
+							<form method="get" asp-controller="IdentityAccount" asp-action="Index" id="accindexform">
+								<a class="dropdown-item" href="#" onclick="document.getElementById('accindexform').submit()">Accounts</a>
+							</form>
+							<form method="get" asp-controller="IdentityRole" asp-action="Index" id="roleindexform">
+								<a class="dropdown-item" href="#" onclick="document.getElementById('roleindexform').submit()">Roles</a>
+							</form>
+							<div class="dropdown-divider"></div>
+						}
+
+						<h6 class="dropdown-header">Account</h6>
+
+						<form method="get" asp-controller="Identity" asp-action="ChangePassword" id="changepasswordform">
+							<a class="dropdown-item" href="#" onclick="document.getElementById('changepasswordform').submit()">Change password</a>
+						</form>
+						<form method="post" asp-controller="Identity" asp-action="LogOut" id="logoutform" asp-antiforgery="true">
+							<a class="dropdown-item" href="#" onclick="document.getElementById('logoutform').submit()">Quit..</a>
+						</form>
+					}
+					else
+					{
+						<h6 class="dropdown-header">Account</h6>
+
+						<form method="get" asp-controller="Identity" asp-action="SignIn" id="singinform">
+							<a class="dropdown-item" href="#" onclick="document.getElementById('singinform').submit()">Sign in..</a>
+						</form>
+						<form method="get" asp-controller="Identity" asp-action="Create" id="registerform">
+							<a class="dropdown-item" href="#" onclick="document.getElementById('registerform').submit()">Create..</a>
+						</form>
+					}
+
+				</li>
+			</ul>
+		</div>
+	</div>
+</header>

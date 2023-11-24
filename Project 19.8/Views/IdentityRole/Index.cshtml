@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Project_19.Models.Role>
+
+@{
+	ViewData["Icss"] = "bi bi-star";
+	ViewData["Title"] = "Roles";
+}
+
+<table class="table table-striped table-bordered m-0 p-0">
+
+	<thead>
+		<tr>
+			<th>
+				@Html.DisplayNameFor(model => model.Id)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Name)
+			</th>
+			<th class="w-25">
+				Actions
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			var isAdmin = item.Name == "admin";
+			var textCss = isAdmin ? "text-dark" : string.Empty;
+			var tdCss = isAdmin ? "bg-warning" : string.Empty;
+
+			<tr>
+
+				<td class="@tdCss">
+					<a class=@textCss asp-action="Details" asp-route-id="@item.Id">
+						@Html.DisplayFor(modelItem => item.Id)
+					</a>
+				</td>
+
+				<td class="@tdCss @textCss">
+					@if (isAdmin)
+					{
+						<i class="bi bi-star-fill"></i> 
+					}
+					@Html.DisplayFor(modelItem => item.Name)
+				</td>
+
+				<td class="@tdCss">
+					@if (!isAdmin)
+					{
+						<a class="text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">
+							<i class="bi bi-pencil @textCss"></i>
+						</a>
+					}
+					<a class="text-decoration-none" asp-action="Details" asp-route-id="@item.Id">
+						@if (!isAdmin)
+						{
+							textCss = "text-secondary";
+						}
+						<i class="bi bi-info-circle @textCss"></i>
+					</a>
+					@if (!isAdmin)
+					{
+						<a class="text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">
+							<i class="bi bi-trash3 text-danger"></i>
+						</a>
+					}
+
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+@section Title {
+	<p>
+		<button type="button" class="btn btn-warning" onclick="location.href='@Url.Action("Create")'">
+			<i class="@ViewBag.Icss"></i> Add role
+		</button>
+	</p>
+}

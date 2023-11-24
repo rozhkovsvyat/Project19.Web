@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Project_19.Models.Account>
+
+@{
+	ViewData["Icss"] = "bi bi-shield-lock";
+    ViewData["Title"] = "Accounts";
+}
+
+<style>
+	.table .dropdown > ul.dropdown-menu > li > form > a.dropdown-item:active {
+		background-color: #198754;
+		color: white
+	}
+</style>
+
+<table class="table table-striped table-bordered m-0 p-0">
+
+	<thead>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Id)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Login)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Email)
+		</th>
+		<th class="w-25">
+			Actions
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+
+	@foreach (var item in Model)
+	{
+		var textCss = string.Empty;
+		var tdCss = string.Empty;
+
+			var isCurrentUser = User.FindFirst(ClaimTypes.NameIdentifier)?.Value == item.Id;
+
+		if (isCurrentUser)
+		{
+			textCss = "text-light";
+			tdCss = "bg-success";
+		}
+
+			<tr>
+
+			<td class="@tdCss">
+				<a class=@textCss asp-action="Details" asp-route-id="@item.Id">
+					@Html.DisplayFor(modelItem => item.Id)
+				</a>
+			</td>
+
+			<td class="@tdCss @textCss">
+				@if (isCurrentUser)
+				{
+					<i class="bi bi-person-circle"></i>
+				}
+				@Html.DisplayFor(modelItem => item.Login)
+			</td>
+
+			<td class="@tdCss @textCss">
+				@Html.DisplayTextFor(modelItem => item.Email)
+			</td>
+
+			<td class="@tdCss">
+			
+			<a class="text-decoration-none" asp-action="Edit" asp-route-id="@item.Id">
+				<i class="bi bi-pencil @textCss"></i>
+			</a>
+
+			<a class="text-decoration-none" asp-action="Details" asp-route-id="@item.Id">
+				<i class="bi bi-info-circle text-secondary @textCss"></i>
+			</a>
+			
+			<a class="text-decoration-none" asp-action="ChangePassword" asp-route-id="@item.Id">
+				<i class="bi bi-key-fill text-success @textCss"></i>
+			</a>
+			
+			<a class="dropdown text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false" role="button" href="#">
+				<i class="bi bi-star-fill text-warning @textCss"></i>
+			</a>
+
+			@if (!isCurrentUser)
+			{
+				<a class="text-decoration-none" asp-action="Delete" asp-route-id="@item.Id">
+						<i class="bi bi-trash3 text-danger"></i>
+				</a>
+			}
+
+			<div class="dropdown text-decoration-none">
+				<ul class="dropdown-menu">
+					<li>
+						<h6 class="dropdown-header">Roles</h6>
+
+						<form method="get" asp-controller="IdentityAccount" asp-action="ShowRoles" asp-route-id="@item.Id" id="showroles_@item.Id">
+								<a class="dropdown-item" href="#" onclick="document.getElementById('showroles_@item.Id').submit()">Show</a>
+						</form>
+						
+						<div class="dropdown-divider"></div>
+
+						<form method="get" asp-controller="IdentityAccount" asp-action="AssignRole" asp-route-id="@item.Id" id="assignrole_@item.Id">
+							<a class="dropdown-item" href="#" onclick="document.getElementById('assignrole_@item.Id').submit()">Assign..</a>
+						</form>
+						<form method="get" asp-controller="IdentityAccount" asp-action="RemoveRole" asp-route-id="@item.Id" id="removerole_@item.Id">
+							<a class="dropdown-item" href="#" onclick="document.getElementById('removerole_@item.Id').submit()">Remove..</a>
+						</form>
+					</li>
+				</ul>
+			</div>
+
+			</td>
+		</tr>
+	}
+	</tbody>
+</table>
+
+@section Title {
+	<p>
+		<button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Create")'">
+			<i class="@ViewBag.Icss"></i> Add account</button></p>
+}
