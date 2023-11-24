@@ -112,7 +112,7 @@ public class ContactsController : PhonebookController
 
 	#endregion
 
-	 #region [Post]
+	#region [Post]
 
 	/// <summary>
 	/// <inheritdoc cref="IContacts.AddAsync"/>
@@ -146,6 +146,8 @@ public class ContactsController : PhonebookController
 	("Id,LastName,FirstName,Patronymic,MobileNumber," +
 	 "Address,Description,CreatedBy,LastModifiedBy")] Contact contact)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (id != contact.Id) return NotFound();
 
 		if (!ModelState.IsValid) return View(contact);
@@ -169,6 +171,8 @@ public class ContactsController : PhonebookController
 	[ActionName(nameof(Delete))]
 	public async Task<IActionResult> DeleteConfirmed(int id)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		try { await _contacts.AddToken(Token).RemoveAsync(id); return RedirectToAction(nameof(Index)); }
 
 		catch (AuthenticationException) { return Authorize(Url.Action("Delete", id)); }

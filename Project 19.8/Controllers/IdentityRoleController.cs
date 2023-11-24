@@ -140,6 +140,8 @@ public class IdentityRoleController : PhonebookController
 	[HttpPost, ValidateAntiForgeryToken]
 	public async Task<IActionResult> Create(CreateRoleForm form)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (!ModelState.IsValid) return View(form);
 
 		try
@@ -173,6 +175,8 @@ public class IdentityRoleController : PhonebookController
 	public async Task<IActionResult> Edit(string id, [Bind
 	("Id,Name")] Role role)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (id != role.Id || role.Name is "admin") return NotFound();
 
 		if (!ModelState.IsValid) return View(role);
@@ -208,6 +212,8 @@ public class IdentityRoleController : PhonebookController
 	[HttpPost, ActionName(nameof(Delete)), ValidateAntiForgeryToken]
 	public async Task<IActionResult> DeleteConfirmed(string id)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		try
 		{
 			var role = await _identity.AddToken(Token).GetRoleByIdAsync(id);

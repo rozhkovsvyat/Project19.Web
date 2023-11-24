@@ -266,6 +266,8 @@ public class IdentityAccountController : PhonebookController
 	[HttpPost, ValidateAntiForgeryToken]
 	public async Task<IActionResult> Create(CreateAccountForm form)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (!ModelState.IsValid) return View(form);
 
 		try
@@ -300,6 +302,8 @@ public class IdentityAccountController : PhonebookController
 	public async Task<IActionResult> Edit(string id, [Bind
 		("Id,Login,Email")] Account account)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (id != account.Id) return NotFound();
 
 		if (!ModelState.IsValid) return View(account);
@@ -336,6 +340,8 @@ public class IdentityAccountController : PhonebookController
 	[HttpPost, ActionName(nameof(Delete)), ValidateAntiForgeryToken]
 	public async Task<IActionResult> DeleteConfirmed(string id)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (id == User.FindFirst(ClaimTypes.NameIdentifier)?.Value) return NotFound();
 
 		try
@@ -361,6 +367,8 @@ public class IdentityAccountController : PhonebookController
 	[HttpPost, ValidateAntiForgeryToken]
 	public async Task<IActionResult> ChangePassword(ChangePasswordForm form)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (!ModelState.IsValid) return View(form);
 
 		try
@@ -398,6 +406,8 @@ public class IdentityAccountController : PhonebookController
 	public async Task<IActionResult> AssignRole(string login, [Bind
 		("Login,Roles,RoleName")] ManageRolesForm form)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (login != form.Login) return NotFound();
 
 		if (!ModelState.IsValid) return View(form);
@@ -436,6 +446,8 @@ public class IdentityAccountController : PhonebookController
 	public async Task<IActionResult> RemoveRole(string login, [Bind
 		("Login,Roles,RoleName")] ManageRolesForm form)
 	{
+		if (!User.IsInRole("admin")) return NotFound();
+
 		if (login != form.Login) return NotFound();
 
 		if (!ModelState.IsValid) return View(form);
