@@ -7,7 +7,7 @@
 
 Web-клиент проекта Phonebook
 
-> :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs) + [Bootstrap](https://getbootstrap.com/) + [FontAwesome](https://fontawesome.com/)
+> :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs)
 > 
 > :link: [Использует Web-Api](https://github.com/rozhkovsvyat/Project19.API/tree/master)
 
@@ -19,7 +19,7 @@ Web-клиент проекта Phonebook
 
 * **PhonebookApi** -- сервисы поставщика контактов и идентификации / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts/) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity/)
 * **PhonebookApiTokenClaims** -- сервис получения полномочий из токена пользователя / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
-* **SocialBar** -- панель социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar/)
+* **SocialBar** -- панель социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar/) + [FontAwesome](https://fontawesome.com/)
 
 ---
 
