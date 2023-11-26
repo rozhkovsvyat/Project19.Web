@@ -18,18 +18,11 @@ Web-клиент проекта Phonebook, работающий на базе [W
 
 ---
 
-### LAYOUT
-
-* **HeaderViewComponent** -- компонент с кнопкой возврата домой и выпадающим навигационным меню
-* **Title**, **Body**, **Scripts** -- текущая страница книги с заголовком
-* **Footer** -- сервис **SocialBar** с кнопкой загрузки [WPF-клиента](https://github.com/rozhkovsvyat/Project19.WPF) + подвал
-
----
-
 ### SERVICES
 
 * **PhonebookApi** -- сервисы поставщика контактов и идентификации / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts/) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity/)
-* **PhonebookApiTokenClaims** -- сервис получения полномочий из токена пользователя / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
+* **PhonebookApiTokenClaims** -- сервис получения пользователя токена / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
+> :bulb: Полномочия пользователя используются для доступа к методам контроллеров аналогично API
 * **SocialBar** -- сервис панели социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar/) + [FontAwesome](https://fontawesome.com/)
   
 ---
@@ -55,3 +48,11 @@ Web-клиент проекта Phonebook, работающий на базе [W
 * **IdentityAccountController** ../IdentityAccount/ -- управление пользовательскими аккаунтами
 
 > <sub>_g_</sub>**Index**</sub><sup>( )</sup>** / <sub>_g_</sub>**Create**<sup>( )</sup>** / <sub>_p_</sub>**Create**<sup>(accform)</sup>** / <sub>_g_</sub>**Details**<sup>(str)</sup>** / <sub>_g_</sub>**Edit**<sup>(str)</sup>** / <sub>_p_</sub>**Edit**<sup>(str,acc)</sup>** / <sub>_g_</sub>**Delete**<sup>(str)</sup>** / <sub>_p_</sub>**Delete**<sup>(str)</sup>** / <sub>_g_</sub>**ChangePassword**<sup>(str)</sup>** / <sub>_p_</sub>**ChangePassword**<sup>(passform)</sup>** / <sub>_g_</sub>**ShowRoles**<sup>(str)</sup>** / <sub>_g_</sub>**AssignRole**<sup>(str)</sup>** / <sub>_p_</sub>**AssignRole**<sup>(str,rolesform)</sup>** / <sub>_g_</sub>**RemoveRole**<sup>(str)</sup>** / <sub>_p_</sub>**RemoveRole**<sup>(str,rolesform)</sup>**
+
+---
+
+### LAYOUT
+
+* **HeaderViewComponent** -- компонент с кнопкой возврата домой и выпадающим навигационным меню
+* **Title**, **Body**, **Scripts** -- текущая страница книги с заголовком
+* **Footer** -- сервис **SocialBar** с кнопкой загрузки [WPF-клиента](https://github.com/rozhkovsvyat/Project19.WPF) + подвал
