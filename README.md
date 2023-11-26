@@ -5,13 +5,13 @@
 
 **#aspnetcore7.0.10**
 
-Web-клиент проекта Phonebook
+Web-клиент проекта Phonebook на базе [Web-Api](https://github.com/rozhkovsvyat/Project19.API/tree/master)
 
-Предоставляет разграниченный доступ к телефонной книге, реализован с использованием [Bootstrap](https://getbootstrap.com/)
+Предоставляет разграниченный доступ к телефонной книге
+
+Реализован с использованием [Bootstrap](https://getbootstrap.com/)
 
 > :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs)
-> 
-> :link: [Использует Web-Api](https://github.com/rozhkovsvyat/Project19.API/tree/master)
 
 ---
 
