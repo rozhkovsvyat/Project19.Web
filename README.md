@@ -49,7 +49,7 @@ Web-клиент проекта Phonebook, работающий на базе [W
 
 * **IdentityRoleController** ../IdentityRole/ -- управление пользовательскими ролями
 
-> <sub>_g_</sub>**Index**<sup>( )</sup>**/ <sub>_g_</sub>**Create**<sup>( )</sup>** / <sub>_p_</sub>**Create**<sup>(roleform)</sup>** / <sub>_g_</sub>**Details**<sup>(str)</sup>**  / <sub>_g_</sub>**Edit**<sup>(str)</sup>** / <sub>_p_</sub>**Edit**<sup>(str,role)</sup>** / <sub>_g_</sub>**Delete**<sup>(str)</sup>** / <sub>_p_</sub>**Delete**<sup>(str)</sup>**
+> <sub>_g_</sub>**Index**<sup>( )</sup>** / <sub>_g_</sub>**Create**<sup>( )</sup>** / <sub>_p_</sub>**Create**<sup>(roleform)</sup>** / <sub>_g_</sub>**Details**<sup>(str)</sup>**  / <sub>_g_</sub>**Edit**<sup>(str)</sup>** / <sub>_p_</sub>**Edit**<sup>(str,role)</sup>** / <sub>_g_</sub>**Delete**<sup>(str)</sup>** / <sub>_p_</sub>**Delete**<sup>(str)</sup>**
 
 * **IdentityAccountController** ../IdentityAccount/ -- управление пользовательскими аккаунтами
 
