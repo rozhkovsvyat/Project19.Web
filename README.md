@@ -5,7 +5,10 @@
 
 **#aspnetcore7.0.10**
 
-Web-клиент проекта Phonebook, реализованный на [Bootstrap](https://getbootstrap.com/)
+Web-клиент проекта Phonebook, реализованный с использованием [Bootstrap](https://getbootstrap.com/)
+
+
+Предоставляет разграниченный доступ к коллекции контактов телефонной книги
 
 > :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs)
 > 
