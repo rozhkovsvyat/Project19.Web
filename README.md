@@ -8,6 +8,10 @@
 Web-клиент проекта Phonebook
 
 > :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs) + [Bootstrap](https://getbootstrap.com/) + [FontAwesome](https://fontawesome.com/)
+> 
+> :link: [Использует Web-Api](https://github.com/rozhkovsvyat/Project19.API/tree/master)
+
+Предоставляет разграниченный доступ к коллекции контактов
 
 ---
 
