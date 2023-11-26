@@ -22,11 +22,20 @@ Web-клиент проекта Phonebook, работающий на базе [W
 
 * **PhonebookApi** -- сервисы поставщика контактов и идентификации / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts/) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity/)
 * **PhonebookApiTokenClaims** -- сервис получения полномочий из токена пользователя / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
-* **SocialBar** -- панель социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar/) + [FontAwesome](https://fontawesome.com/)
+* **SocialBar** -- сервис панели социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar/) + [FontAwesome](https://fontawesome.com/)
 
 ---
 
+### LAYOUT
+
+* **HeaderViewComponent** -- кнопка возврата домой + выпадающее навигационное меню
+* **Title**/**Body**/**Scripts**  -- текущая страница книги и ее заголовок
+*  **SocialBar**/**Footer** -- сервис панели социальных сетей + ссылка на загрузку WPF-клиента
+---
+
 ### CONTROLLERS
+
+* **PhonebookController** -- базовый абстрактный контроллер, реализующий сброс сессии и редирект авторизации
 
 * **ContactsController** ../Contacts/ -- управление контактами
 
