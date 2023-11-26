@@ -18,24 +18,25 @@ Web-клиент проекта Phonebook, работающий на базе [W
 
 ---
 
+### LAYOUT
+
+* **HeaderViewComponent** -- компонент с кнопкой возврата домой и выпадающим навигационным меню
+* **Title**, **Body**, **Scripts** -- текущая страница книги с заголовком
+* **Footer** -- сервис **[SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar/)** с кнопкой загрузки [WPF-клиента](https://github.com/rozhkovsvyat/Project19.WPF) и подвал
+
+---
+
 ### SERVICES
 
 * **PhonebookApi** -- сервисы поставщика контактов и идентификации / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts/) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity/)
 * **PhonebookApiTokenClaims** -- сервис получения полномочий из токена пользователя / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
 * **SocialBar** -- сервис панели социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar/) + [FontAwesome](https://fontawesome.com/)
-
----
-
-### LAYOUT
-
-* **HeaderViewComponent** -- кнопка возврата домой + выпадающее навигационное меню
-* **Title**/**Body**/**Scripts**  -- текущая страница книги и ее заголовок
-*  **SocialBar**/**Footer** -- сервис панели социальных сетей + ссылка на загрузку [WPF-клиента](https://github.com/rozhkovsvyat/Project19.WPF) 
+  
 ---
 
 ### CONTROLLERS
 
-* **PhonebookController** -- базовый абстрактный контроллер, реализующий сброс сессии и редирект авторизации
+* **PhonebookController** -- абстрактный контроллер, реализующий сброс сессии и редирект авторизации
 
 * **ContactsController** ../Contacts/ -- управление контактами
 
