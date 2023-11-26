@@ -30,7 +30,7 @@ Web-клиент проекта Phonebook, работающий на базе [W
 
 * **HeaderViewComponent** -- кнопка возврата домой + выпадающее навигационное меню
 * **Title**/**Body**/**Scripts**  -- текущая страница книги и ее заголовок
-*  **SocialBar**/**Footer** -- сервис панели социальных сетей + ссылка на загрузку WPF-клиента
+*  **SocialBar**/**Footer** -- сервис панели социальных сетей + ссылка на загрузку [WPF-клиента](https://github.com/rozhkovsvyat/Project19.WPF) 
 ---
 
 ### CONTROLLERS
