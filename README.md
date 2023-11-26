@@ -7,11 +7,11 @@
 
 Web-клиент проекта Phonebook, работает на базе [Web-Api](https://github.com/rozhkovsvyat/Project19.API/tree/master)
 
+> :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs)
+
 Предоставляет разграниченный доступ к книге контактов
 
 Реализован с использованием [Bootstrap](https://getbootstrap.com/)
-
-> :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs)
 
 ---
 
