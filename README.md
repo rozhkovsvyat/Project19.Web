@@ -36,8 +36,8 @@ Web-клиент проекта Phonebook, работающий на базе [W
 
 ### CONTROLLERS
 
-* **PhonebookController** -- абстрактный контроллер, реализующий сброс сессии и редирект авторизации
-
+* **PhonebookController** -- базовый контроллер, реализующий сброс сессии и переход на страницу авторизации
+  
 * **ContactsController** ../Contacts/ -- управление контактами
 
 > :bulb: **<sub>_type_</sub>Method<sup>(args)**</sup>*<sup>-auth/</sup>**<sup>-аdmin</sup>
