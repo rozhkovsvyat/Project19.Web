@@ -22,7 +22,7 @@ Web-клиент проекта Phonebook на базе [Web-Api](https://github
 
 * **HeaderViewComponent** -- компонент с кнопкой возврата домой и выпадающим навигационным меню
 * **Title**, **Body**, **Scripts** -- текущая страница книги с заголовком
-* **Footer** -- сервис **SocialBar** с кнопкой загрузки [WPF-клиента](https://github.com/rozhkovsvyat/Project19.WPF) + подвал
+* **Footer** -- сервис **SocialBar** с кнопкой загрузки [WPF-клиента](https://github.com/rozhkovsvyat/Project19.WPF)
 
 ---
 
