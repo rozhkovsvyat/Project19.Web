@@ -38,7 +38,7 @@ Web-клиент проекта Phonebook на базе [API](https://github.com
   
 * **ContactsController** ../Contacts/ -- управление контактами
 
-> :bulb: **<sub>_type_</sub>Method<sup>(args)**</sup>*<sup>-auth/</sup>**<sup>-аdmin</sup>
+> :memo: **<sub>_type_</sub>Method<sup>(args)**</sup>*<sup>-auth/</sup>**<sup>-аdmin</sup>
 >
 > <sub>_g_</sub>**Index**</sub><sup>( )</sup> / <sub>_g_</sub>**Create**<sup>( )</sup>* / <sub>_p_</sub>**Create**<sup>(contact)</sup>* / <sub>_g_</sub>**Details**<sup>(int)</sup>* / <sub>_g_</sub>**Edit**<sup>(int)</sup>** / <sub>_p_</sub>**Edit**<sup>(int,contact)</sup>** / <sub>_g_</sub>**Delete**<sup>(int)</sup>** / <sub>_p_</sub>**Delete**<sup>(int)</sup>**
 
