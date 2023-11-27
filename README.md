@@ -22,7 +22,7 @@ Web-клиент телефонной книги на базе [API](https://git
 
 ### CONTROLLERS
   
-* **ContactsController** ../Contacts/ -- управление контактами
+* **ContactsController** ../Contacts/ -- управление книгой контактов
 
 > :memo: **<sub>_type_</sub>Method<sup>(args)**</sup>*<sup>-auth/</sup>**<sup>-аdmin</sup>
 >
