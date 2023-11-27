@@ -14,9 +14,9 @@ Web-клиент на базе [API](https://github.com/rozhkovsvyat/Project19.A
 
 ### SERVICES
 
-* **SocialBar** -- панель социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar) + [FontAwesome](https://fontawesome.com)
 * **PhonebookApi** -- поставщик контактов и идентификация / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity)
-* **PhonebookApiTokenClaims** -- сервис полномочий токена / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session)
+* **PhonebookApiTokenClaims** -- сервис полномочий пользователя / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session)
+* **SocialBar** -- панель социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar) + [FontAwesome](https://fontawesome.com)
 
 ---
 
