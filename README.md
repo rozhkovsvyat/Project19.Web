@@ -9,7 +9,7 @@ Web-клиент на базе [API](https://github.com/rozhkovsvyat/Project19.A
 
 > :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs)
 > 
-> :link: [Использует Bootstrap](https://getbootstrap.com) [+1](https://fontawesome.com)
+> :link: [Использует Bootstrap ](https://getbootstrap.com)[и FontAwesome](https://fontawesome.com)
 
 ---
 
