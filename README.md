@@ -3,7 +3,7 @@
 <img align="right" width="100" height="100" src="https://github.com/rozhkovsvyat/Project19.API/assets/71471748/56c66f5c-b87e-45c3-bca7-1f9f2cde5d21">
 <img align="right" width="100" height="100" src="https://github.com/rozhkovsvyat/Project19.API/assets/71471748/cdfe90f7-88d8-4d52-a921-8e0a1ec87a26">
 
-**#aspnetcore #net7.0.10**
+**#aspnetcore7.0.10**
 
 Web-клиент проекта Phonebook на базе [API](https://github.com/rozhkovsvyat/Project19.API)
 
