@@ -5,7 +5,7 @@
 
 **#net7.0.10-aspnetcore**
 
-Web-клиент проекта Phonebook на базе [API](https://github.com/rozhkovsvyat/Project19.API)
+Web-клиент на базе [API](https://github.com/rozhkovsvyat/Project19.API)
 
 > :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs)
 > 
