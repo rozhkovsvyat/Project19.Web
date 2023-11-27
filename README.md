@@ -20,11 +20,10 @@ Web-клиент на базе [API](https://github.com/rozhkovsvyat/Project19.A
 
 ---
 
-### LAYOUT
+### COMPONENTS
 
 * **HeaderViewComponent** -- шапка с выпадающим навигационным меню и кнопкой возврата домой
-* **Title**, **Body**, **Scripts** -- текущая страница
-* **Footer** -- панель социальных сетей с кнопкой загрузки [WPF-клиента](https://github.com/rozhkovsvyat/Project19.WPF)
+
 ---
 
 ### CONTROLLERS
