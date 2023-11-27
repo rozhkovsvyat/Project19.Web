@@ -55,3 +55,8 @@ Web-клиент проекта Phonebook на базе [API](https://github.com
 > <sub>_g_</sub>**Index**</sub><sup>( )</sup>** / <sub>_g_</sub>**Create**<sup>( )</sup>** / <sub>_p_</sub>**Create**<sup>(accform)</sup>** / <sub>_g_</sub>**Details**<sup>(str)</sup>** / <sub>_g_</sub>**Edit**<sup>(str)</sup>** / <sub>_p_</sub>**Edit**<sup>(str,acc)</sup>** / <sub>_g_</sub>**Delete**<sup>(str)</sup>** / <sub>_p_</sub>**Delete**<sup>(str)</sup>** / <sub>_g_</sub>**ChangePassword**<sup>(str)</sup>** / <sub>_p_</sub>**ChangePassword**<sup>(passform)</sup>** / <sub>_g_</sub>**ShowRoles**<sup>(str)</sup>** / <sub>_g_</sub>**AssignRole**<sup>(str)</sup>** / <sub>_p_</sub>**AssignRole**<sup>(str,rolesform)</sup>** / <sub>_g_</sub>**RemoveRole**<sup>(str)</sup>** / <sub>_p_</sub>**RemoveRole**<sup>(str,rolesform)</sup>**
 
 * **PhonebookController** -- абстрактный контроллер, реализующий переход на страницу авторизации
+
+---
+
+### ERRORS
+* **404** NotFound / **500** Exception / **502** ServiceUnavailable
