@@ -20,10 +20,10 @@ Web-клиент проекта Phonebook на базе [API](https://github.com
 
 ### SERVICES
 
-* **PhonebookApi** -- сервисы поставщика контактов и идентификации / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts/) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity/)
-* **PhonebookApiTokenClaims** -- сервис пользователя токена / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
-> :bulb: Предоставляет пользователю полномочия из токена сессии
 * **SocialBar** -- сервис панели социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar/) + [FontAwesome](https://fontawesome.com/)
+* **PhonebookApi** -- сервисы поставщика контактов и идентификации / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts/) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity/)
+> :bulb: Предоставляет пользователю полномочия из токена сессии
+* **PhonebookApiTokenClaims** -- сервис пользователя токена / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session/)
 
 ---
 
