@@ -58,6 +58,6 @@ Web-клиент проекта Phonebook на базе [API](https://github.com
 
 ---
 
-:bomb: **502** apinotavailable
-:bomb: **500** exception
 :bomb: **404** notfound
+:bomb: **500** exception
+:bomb: **502** apinotavailable
