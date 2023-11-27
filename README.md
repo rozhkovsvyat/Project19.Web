@@ -20,12 +20,6 @@ Web-клиент на базе [API](https://github.com/rozhkovsvyat/Project19.A
 
 ---
 
-### COMPONENTS
-
-* **HeaderViewComponent** -- шапка с выпадающим навигационным меню и кнопкой возврата домой
-
----
-
 ### CONTROLLERS
   
 * **ContactsController** ../Contacts/ -- управление контактами
