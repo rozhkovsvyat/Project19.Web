@@ -9,7 +9,7 @@ Web-клиент на базе [API](https://github.com/rozhkovsvyat/Project19.A
 
 > :link: [Использует общие библиотеки](https://github.com/rozhkovsvyat/Project19.Libs)
 > 
-> :link: [Использует Bootstrap](https://getbootstrap.com)
+> :link: [Использует Bootstrap](https://getbootstrap.com) [+1](https://fontawesome.com)
 
 Предоставляет разграниченный доступ к телефонной книге:
 * **Администратор** -- полный доступ к книге, администрирование пользователей
@@ -20,8 +20,8 @@ Web-клиент на базе [API](https://github.com/rozhkovsvyat/Project19.A
 
 ### SERVICES
 
-* **SocialBar** -- сервис панели социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar) + [FontAwesome](https://fontawesome.com)
-* **PhonebookApi** -- сервисы поставщика контактов и идентификации / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity)
+* **SocialBar** -- панель социальных сетей / [UrlButtonService.SocialBar](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.UrlButtonService.SocialBar) + [FontAwesome](https://fontawesome.com)
+* **PhonebookApi** -- поставщик контактов и идентификация / [Api.ApiContacts](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiContacts) + [Api.ApiIdentity](https://www.nuget.org/packages/RozhkovSvyat.Project19.Services.Api.ApiIdentity)
 > :bulb: Права пользователя предоставляет токен сессии
 * **PhonebookApiTokenClaims** -- сервис полномочий токена / [JwtBearer](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.JwtBearer) + [Session](https://www.nuget.org/packages/Microsoft.AspNetCore.Session)
 
