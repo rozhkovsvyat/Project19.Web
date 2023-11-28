@@ -23,21 +23,21 @@ Web-клиент телефонной книги на базе [API](https://git
 
 ### CONTROLLERS
   
-* **ContactsController** ../Contacts/ -- управление книгой контактов
+* **ContactsController** ../contacts/ -- управление книгой контактов
 
 > :memo: **<sub>_type_</sub>Method<sup>(args)**</sup>*<sup>-auth/</sup>**<sup>-аdmin</sup>
 >
 > <sub>_g_</sub>**Index**</sub><sup>( )</sup> / <sub>_g_</sub>**Create**<sup>( )</sup>* / <sub>_p_</sub>**Create**<sup>(contact)</sup>* / <sub>_g_</sub>**Details**<sup>(int)</sup>* / <sub>_g_</sub>**Edit**<sup>(int)</sup>** / <sub>_p_</sub>**Edit**<sup>(int,contact)</sup>** / <sub>_g_</sub>**Delete**<sup>(int)</sup>** / <sub>_p_</sub>**Delete**<sup>(int)</sup>**
 
-* **IdentityController** ../Identity/ -- управление авторизацией пользователей
+* **IdentityController** ../identity/ -- управление авторизацией пользователей
 
 > <sub>_p_</sub>**LogOut**<sup>( )</sup> / <sub>_g_</sub>**SignIn**<sup>( )</sup> / <sub>_p_</sub>**SignIn**<sup>(signinform)</sup> / <sub>_g_</sub>**Create**<sup>( )</sup> / <sub>_p_</sub>**Create**<sup>(accform)</sup> / <sub>_g_</sub>**ChangePassword**<sup>( )</sup>* / <sub>_p_</sub>**ChangePassword**<sup>(passform)</sup>*
 
-* **IdentityRoleController** ../IdentityRole/ -- управление пользовательскими ролями
+* **IdentityRoleController** ../identityrole/ -- управление пользовательскими ролями
 
 > <sub>_g_</sub>**Index**<sup>( )</sup>** / <sub>_g_</sub>**Create**<sup>( )</sup>** / <sub>_p_</sub>**Create**<sup>(roleform)</sup>** / <sub>_g_</sub>**Details**<sup>(str)</sup>**  / <sub>_g_</sub>**Edit**<sup>(str)</sup>** / <sub>_p_</sub>**Edit**<sup>(str,role)</sup>** / <sub>_g_</sub>**Delete**<sup>(str)</sup>** / <sub>_p_</sub>**Delete**<sup>(str)</sup>**
 
-* **IdentityAccountController** ../IdentityAccount/ -- управление пользовательскими аккаунтами
+* **IdentityAccountController** ../identityaccount/ -- управление пользовательскими аккаунтами
 
 > <sub>_g_</sub>**Index**</sub><sup>( )</sup>** / <sub>_g_</sub>**Create**<sup>( )</sup>** / <sub>_p_</sub>**Create**<sup>(accform)</sup>** / <sub>_g_</sub>**Details**<sup>(str)</sup>** / <sub>_g_</sub>**Edit**<sup>(str)</sup>** / <sub>_p_</sub>**Edit**<sup>(str,acc)</sup>** / <sub>_g_</sub>**Delete**<sup>(str)</sup>** / <sub>_p_</sub>**Delete**<sup>(str)</sup>** / <sub>_g_</sub>**ChangePassword**<sup>(str)</sup>** / <sub>_p_</sub>**ChangePassword**<sup>(passform)</sup>** / <sub>_g_</sub>**ShowRoles**<sup>(str)</sup>** / <sub>_g_</sub>**AssignRole**<sup>(str)</sup>** / <sub>_p_</sub>**AssignRole**<sup>(str,rolesform)</sup>** / <sub>_g_</sub>**RemoveRole**<sup>(str)</sup>** / <sub>_p_</sub>**RemoveRole**<sup>(str,rolesform)</sup>**
 
