@@ -45,6 +45,6 @@ Web-клиент телефонной книги на базе [API](https://git
 
 ---
 
-:bomb: **404** notfound
-:bomb: **500** exception
-:bomb: **502** apinotavailable
+💣 **404** notfound
+💣 **500** exception
+💣 **502** apinotavailable
